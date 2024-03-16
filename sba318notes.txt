@@ -1,0 +1,3 @@
+Some concerns about searching for bands/albums/labels
+    1. You want the values of bandName, albumName, label, to appear as they would in print, or on the album cover
+    2. the url requires no whitespace for band names/album names/label names
