@@ -30,5 +30,13 @@
     "age": 38,
     "username": "fnoslet",
     "email": "fnoolet@noob.com"
+  },
+  {
+    "id": 21,
+    "fname": "Max",
+    "lname": "Mighty",
+    "age": 12,
+    "username": "mmighty",
+    "email": "mmighty@toys.com"
   }
 ]

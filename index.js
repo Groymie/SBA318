@@ -127,14 +127,13 @@ app
 
     // console.log(typeof Number(req.params.userID), "params type");
     // console.log(newUsersArray, " :this is the array type after push");
-    const userToDelete = newUsersData.find((newUser) => {
-      // console.log(
-      //   `here is new userID: ${newUser}. Here is user id: ${newUser.id}`
-      // );
-      newUser.id == Number(req.params.userID);
-    });
+    const userToDelete = newUsersData.find(
+      (newUser) => newUser.id == req.params.userID
+    );
     console.log(typeof userToDelete, "this is the type of user to delete");
     const indexToDelete = newUsersData.indexOf(userToDelete);
+    console.log(indexToDelete, "this is the index");
     deletedUser = newUsersData.splice(indexToDelete, 1);
+    res.send(deletedUser);
     // console.log(deletedUser);
   });
