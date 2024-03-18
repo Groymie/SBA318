@@ -1,6 +1,6 @@
 [
   {
-    "userID": 2,
+    "id": 1,
     "fname": "Goku",
     "lname": "Son",
     "age": 47,
@@ -8,7 +8,7 @@
     "email": "gson@dbz.com"
   },
   {
-    "userID": 3,
+    "id": 2,
     "fname": "Faye",
     "lname": "Valentine",
     "age": 77,
@@ -16,7 +16,7 @@
     "email": "fvalentine@bebop.com"
   },
   {
-    "userID": 4,
+    "id": 3,
     "fname": "Quon",
     "lname": "Kisaragi",
     "age": 17,
@@ -24,18 +24,10 @@
     "email": "qkisaragi@xephon.com"
   },
   {
-    "id": 21,
+    "id": 4,
     "fname": "kerfes",
     "lname": "noobfoo",
-    "age": 30,
-    "username": "fnoslet",
-    "email": "fnoolet@noob.com"
-  },
-  {
-    "id": 21,
-    "fname": "kerfes",
-    "lname": "noobfoo",
-    "age": 30,
+    "age": 38,
     "username": "fnoslet",
     "email": "fnoolet@noob.com"
   }

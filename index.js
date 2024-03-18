@@ -1,11 +1,12 @@
 const express = require("express");
+const fs = require("fs").promises;
 const bodyparser = require("body-parser");
 const app = express();
 const port = 5000;
 
-const bands = require("./data/bands.js");
-const users = require("./data/users.js");
-const newUsers = require("./data/newusers.js");
+const bands = "./data/bands.json";
+const users = "./data/users.json";
+const newUsers = "./data/newusers.json";
 
 app.listen(port, () => {
   console.log(`The server is listening on port: ${port}`);
@@ -15,55 +16,70 @@ app.listen(port, () => {
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 
+app.use(express.json());
+
 // Get Methods
 app.get("/", (req, res) => {
   res.send("Welcome to the fantastic bands database homepage!");
 });
 
-app.get("/api/users", (req, res) => {
-  res.json(users);
+app.get("/api/users", async (req, res) => {
+  const sendThisUnparsed = await fs.readFile(users);
+  const sendThis = JSON.parse(sendThisUnparsed);
+  console.log(typeof sendThis);
+  res.send(sendThis);
 });
 
-app.get("/api/bands", (req, res) => {
-  res.json(bands);
+app.get("/api/bands", async (req, res) => {
+  const sendThisUnparsed = await fs.readFile(bands);
+  const sendThis = JSON.parse(sendThisUnparsed);
+  res.send(sendThis);
 });
 
-app.get("/api/bands/:bandName", (req, res) => {
-  const requestedBand = bands.find(
+app.get("/api/bands/:bandName", async (req, res) => {
+  const bandsUnparsed = await fs.readFile(bands);
+  const bandsData = JSON.parse(bandsUnparsed);
+  console.log(typeof bandsData);
+  const requestedBand = bandsData.find(
     (band) => band.bandName.toLowerCase() == req.params.bandName.toLowerCase()
   );
-  res.json(requestedBand);
+  res.send(requestedBand);
 });
 
-app.get("/api/bands/:bandName/discography/:albumName", (req, res) => {
-  const requestedBand = bands.find(
+app.get("/api/bands/:bandName/discography/:albumName", async (req, res) => {
+  const bandsUnparsed = await fs.readFile(bands);
+  const bandsData = JSON.parse(bandsUnparsed);
+  const requestedBand = bandsData.find(
     (band) => band.bandName.toLowerCase() == req.params.bandName.toLowerCase()
   );
   const requestedAlbum = requestedBand.discography.find(
     (album) =>
       album.albumName.toLowerCase() == req.params.albumName.toLowerCase()
   );
-  res.json(requestedAlbum);
+  res.send(requestedAlbum);
 });
 
-app.get("/api/bands/:bandName/discography", (req, res) => {
-  const requestedBand = bands.find(
+app.get("/api/bands/:bandName/discography", async (req, res) => {
+  const bandsUnparsed = await fs.readFile(bands);
+  const bandsData = JSON.parse(bandsUnparsed);
+  const requestedBand = bandsData.find(
     (band) => band.bandName.toLowerCase() == req.params.bandName.toLowerCase()
   );
-  res.json(requestedBand.discography);
+  res.send(requestedBand.discography);
 });
 
 // New user methods, includes post and delete
 
 app
   .route("/api/newusers/:userID")
-  .get((req, res) => {
-    const requestedNewUser = newUsers.find(
+  .get(async (req, res) => {
+    const newUsersUnparsed = await fs.readFile(newUser);
+    const requestedNewUser = newUsersUnparsed.find(
       (newUser) => newUser.userID == req.params.userID
     );
     res.json(requestedNewUser);
   })
-  .post((req, res) => {
+  .post(async (req, res) => {
     if (
       !req.body.fname ||
       !req.body.lname ||
@@ -75,6 +91,8 @@ app
         .status(400)
         .send("Must provide all required information to register a new user");
     } else {
+      const newUsersUnparsed = await fs.readFile(newUsers);
+      const newUsersData = await JSON.parse(newUsersUnparsed);
       const userToRegister = {
         id: newUsers.length + 1,
         fname: req.body.fname,
@@ -83,14 +101,32 @@ app
         username: req.body.username,
         email: req.body.email,
       };
-      newUsers.push(userToRegister);
+      console.log(typeof newUsersData, newUsersData);
+      newUsersData.push(userToRegister);
+      const newUsersDataString = JSON.stringify(newUsersData, null, 2);
+      // console.log(newUsersData);
+      await fs.writeFile("./data/newusers.json", newUsersDataString);
       res.json(newUsers[newUsers.length - 1]);
     }
   });
-// .delete((req, res, next) => {
-//   const userToDelete = newUsers.findIndex((newUser) => {
-//     newUser.userID == req.params.userID;
-//   });
-//   newUsers.splice(userToDelete, 1);
-//   return true;
+// .delete(async (req, res) => {
+//   // console.log(typeof req.params.userID);
+//   // console.log(newUsers);
+//   const newUsersUnparsed = await fs.readFile(newUsers);
+//   const newUsersData = await JSON.parse(newUsersUnparsed);
+
+//   // console.log(newUsersData, " :this is the newUsersData type before push");
+
+//   // console.log(typeof Number(req.params.userID), "params type");
+//   // console.log(newUsersArray, " :this is the array type after push");
+//   const userToDelete = newUsersData.find((newUser, i) => {
+//     console.log(
+//       `here is new user: ${newUser}. Here is user id: ${newUser.id}`
+//     );
+//     newUser.id == Number(req.params.userID);
+//   })
+//   console.log(typeof userToDelete, "this is the type of user to delete");
+//   const indexToDelete = newUsersData.indexOf(userToDelete);
+//   deletedUser = newUsersData.splice(i, 1);
+//   console.log(deletedUser);
 // });
