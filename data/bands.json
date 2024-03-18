@@ -1,0 +1,204 @@
+[
+  {
+    "bandID": 1,
+    "bandName": "Tool",
+    "members": ["Maynard", "Danny", "Adam", "Justin"],
+    "formerMembers": ["Paul"],
+    "genre": "progressive metal",
+    "country": "United States",
+    "discography": [
+      {
+        "albumName": "Opiate",
+        "albumformat": "mini LP",
+        "releaseDate": "1992-03",
+        "label": "Zoo Entertainment/BMG"
+      },
+      {
+        "albumName": "Undertow",
+        "albumformat": "LP",
+        "releaseDate": "1993-02",
+        "label": "Zoo Entertainment/BMG"
+      },
+      {
+        "albumName": "Aenima",
+        "albumformat": "LP",
+        "releaseDate": "1996-10-21",
+        "label": "Zoo Entertainment/BMG"
+      },
+      {
+        "albumName": "Salival",
+        "albumformat": "Box Set",
+        "releaseDate": "2000-12-12",
+        "label": "Volcano"
+      },
+      {
+        "albumName": "Lateralus",
+        "albumformat": "LP",
+        "releaseDate": "2001-05-15",
+        "label": "Volcano"
+      },
+      {
+        "albumName": "10000 Days",
+        "albumformat": "LP",
+        "releaseDate": "2006-05-02",
+        "label": "Volcano"
+      },
+      {
+        "albumName": "Fear Inoculum",
+        "albumformat": "LP",
+        "releaseDate": "2019-08-30",
+        "label": "Zoo Entertainment/BMG"
+      }
+    ]
+  },
+  {
+    "bandID": 2,
+    "bandName": "Opeth",
+    "members": [
+      "Michael Akerfeldt",
+      "Martin Mendez",
+      "Fredrik Akesson",
+      "Joakim Svalberg",
+      "Waltteri Vayrynen"
+    ],
+    "formerMembers": [
+      "David Isberg",
+      "Micke Bargstrom",
+      "Dan Nilsson",
+      "Rille Even",
+      "Anders Nordin",
+      "Andreas Dimeo",
+      "Nick Doring",
+      "Kim Pettersson",
+      "Johan De Farfalla",
+      "Peter Lindgren",
+      "Mattias Ander",
+      "Stefan Guteklint",
+      "Martin Lopez",
+      "Per Wiberg",
+      "Martin 'Axe' Axenrot",
+      "Sami Karppinen"
+    ],
+    "genre": "progressive death metal",
+    "country": "Sweden",
+    "discography": [
+      {
+        "albumName": "Orchid",
+        "albumformat": "LP",
+        "releaseDate": "1995-01",
+        "label": "Candlelight"
+      },
+      {
+        "albumName": "Morningrise",
+        "albumformat": "LP",
+        "releaseDate": "1996-08-12",
+        "label": "Candlelight"
+      },
+      {
+        "albumName": "My Arms, Your Hearse",
+        "albumformat": "LP",
+        "releaseDate": "1998-08-18",
+        "label": "Candlelight"
+      },
+      {
+        "albumName": "Still Life",
+        "albumformat": "LP",
+        "releaseDate": "1999-09",
+        "label": "Peaceville"
+      },
+      {
+        "albumName": "Blackwater Park",
+        "albumformat": "LP",
+        "releaseDate": "2001-03-12",
+        "label": "Music For Nations"
+      },
+      {
+        "albumName": "Deliverance",
+        "albumformat": "LP",
+        "releaseDate": "2002-11-12",
+        "label": "Music For Nations"
+      },
+      {
+        "albumName": "Damnation",
+        "albumformat": "LP",
+        "releaseDate": "2003-04-22",
+        "label": "Music For Nations"
+      },
+      {
+        "albumName": "Ghost Reveries",
+        "albumformat": "LP",
+        "releaseDate": "2005-08-30",
+        "label": "Roadrunner"
+      },
+      {
+        "albumName": "Watershed",
+        "albumformat": "LP",
+        "releaseDate": "2008-06-03",
+        "label": "Roadrunner"
+      },
+      {
+        "albumName": "Heritage",
+        "albumformat": "LP",
+        "releaseDate": "2011-09-19",
+        "label": "Roadrunner"
+      },
+      {
+        "albumName": "Pale Communion",
+        "albumformat": "LP",
+        "releaseDate": "2014-08=21",
+        "label": "Roadrunner"
+      },
+      {
+        "albumName": "Sorceress",
+        "albumformat": "LP",
+        "releaseDate": "2016-09-30",
+        "label": "Nuclear Blast"
+      },
+      {
+        "albumName": "In Cauda Venemum",
+        "albumformat": "LP",
+        "releaseDate": "2019-09-27",
+        "label": "Nuclear Blast"
+      }
+    ]
+  },
+  {
+    "bandID": 3,
+    "bandName": "Wilderun",
+    "members": [
+      "Evan Anderson Berry",
+      "Daniel Muller",
+      "Jonathan Teachey",
+      "Wayne Ingram"
+    ],
+    "formerMembers": ["Joe Getter"],
+    "genre": "progressive death metal",
+    "country": "United States",
+    "discography": [
+      {
+        "albumName": "Olden Tales & Deathly Trails",
+        "albumformat": "LP",
+        "releaseDate": "2012-09-21",
+        "label": "Independent"
+      },
+      {
+        "albumName": "Sleep at the Edge of the Earth",
+        "albumformat": "LP",
+        "releaseDate": "2015-04-07",
+        "label": "Independent"
+      },
+      {
+        "albumName": "Veil of Imagination",
+        "albumformat": "LP",
+        "releaseDate": "2019-11-01",
+        "label": "Independent"
+      },
+      {
+        "albumName": "Epigone",
+        "albumformat": "LP",
+        "releaseDate": "2022-01-07",
+        "label": "Century Media Records"
+      }
+    ]
+  }
+]
