@@ -134,6 +134,7 @@ app
     const indexToDelete = newUsersData.indexOf(userToDelete);
     console.log(indexToDelete, "this is the index");
     deletedUser = newUsersData.splice(indexToDelete, 1);
+    fs.writeFile(newUsers, JSON.stringify(newUsersData));
     res.send(deletedUser);
     // console.log(deletedUser);
   });
