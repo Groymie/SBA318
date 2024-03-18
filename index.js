@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 app.get("/api/users", async (req, res) => {
   const sendThisUnparsed = await fs.readFile(users);
   const sendThis = JSON.parse(sendThisUnparsed);
-  console.log(typeof sendThis);
+  // console.log(typeof sendThis);
   res.send(sendThis);
 });
 
@@ -68,15 +68,23 @@ app.get("/api/bands/:bandName/discography", async (req, res) => {
   res.send(requestedBand.discography);
 });
 
+app.get("/api/newusers", async (req, res) => {
+  const newUsersUnparsed = await fs.readFile(newUsers);
+  const newUsersData = await JSON.parse(newUsersUnparsed);
+  res.send(newUsersData);
+});
+
 // New user methods, includes post and delete
 
 app
   .route("/api/newusers/:userID")
   .get(async (req, res) => {
-    const newUsersUnparsed = await fs.readFile(newUser);
-    const requestedNewUser = newUsersUnparsed.find(
-      (newUser) => newUser.userID == req.params.userID
+    const newUsersUnparsed = await fs.readFile(newUsers);
+    const newUsersData = JSON.parse(newUsersUnparsed);
+    const requestedNewUser = newUsersData.find(
+      (newUser) => newUser.id == req.params.userID
     );
+    console.log(requestedNewUser);
     res.json(requestedNewUser);
   })
   .post(async (req, res) => {
@@ -108,25 +116,25 @@ app
       await fs.writeFile("./data/newusers.json", newUsersDataString);
       res.json(newUsers[newUsers.length - 1]);
     }
+  })
+  .delete(async (req, res) => {
+    // console.log(typeof req.params.userID);
+    // console.log(newUsers);
+    const newUsersUnparsed = await fs.readFile(newUsers);
+    const newUsersData = await JSON.parse(newUsersUnparsed);
+
+    // console.log(newUsersData, " :this is the newUsersData type before push");
+
+    // console.log(typeof Number(req.params.userID), "params type");
+    // console.log(newUsersArray, " :this is the array type after push");
+    const userToDelete = newUsersData.find((newUser) => {
+      // console.log(
+      //   `here is new userID: ${newUser}. Here is user id: ${newUser.id}`
+      // );
+      newUser.id == Number(req.params.userID);
+    });
+    console.log(typeof userToDelete, "this is the type of user to delete");
+    const indexToDelete = newUsersData.indexOf(userToDelete);
+    deletedUser = newUsersData.splice(indexToDelete, 1);
+    // console.log(deletedUser);
   });
-// .delete(async (req, res) => {
-//   // console.log(typeof req.params.userID);
-//   // console.log(newUsers);
-//   const newUsersUnparsed = await fs.readFile(newUsers);
-//   const newUsersData = await JSON.parse(newUsersUnparsed);
-
-//   // console.log(newUsersData, " :this is the newUsersData type before push");
-
-//   // console.log(typeof Number(req.params.userID), "params type");
-//   // console.log(newUsersArray, " :this is the array type after push");
-//   const userToDelete = newUsersData.find((newUser, i) => {
-//     console.log(
-//       `here is new user: ${newUser}. Here is user id: ${newUser.id}`
-//     );
-//     newUser.id == Number(req.params.userID);
-//   })
-//   console.log(typeof userToDelete, "this is the type of user to delete");
-//   const indexToDelete = newUsersData.indexOf(userToDelete);
-//   deletedUser = newUsersData.splice(i, 1);
-//   console.log(deletedUser);
-// });
