@@ -4,6 +4,8 @@ const bodyparser = require("body-parser");
 const app = express();
 const port = 5000;
 
+app.set("view engine", "ejs");
+
 const bands = "./data/bands.json";
 const users = "./data/users.json";
 const newUsers = "./data/newusers.json";
@@ -27,7 +29,7 @@ app.get("/api/users", async (req, res) => {
   const sendThisUnparsed = await fs.readFile(users);
   const sendThis = JSON.parse(sendThisUnparsed);
   // console.log(typeof sendThis);
-  res.send(sendThis);
+  res.render("index", { data: sendThisUnparsed });
 });
 
 app.get("/api/bands", async (req, res) => {
