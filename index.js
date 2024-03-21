@@ -20,6 +20,8 @@ app.use(bodyparser.json());
 
 app.use(express.json());
 
+app.use(express.static("public"));
+
 // Get Methods
 app.get("/", (req, res) => {
   res.send("Welcome to the fantastic bands database homepage!");
